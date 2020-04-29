@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+
+{% extends 'portfolio/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+    <div style="text-align: center; margin-bottom: 50px">
+        <h1 class="display-4">Blogs</h1>
+        <h3>Dhanushka has written {{ blogs.count }} blog{{ blogs.count|pluralize }}</h3>
+    </div>
+
+    {% for blog in blogs %}
+        <a href="{% url 'blog:detail' blog_id=blog.id %}"><p class="h2">{{ blog.title }}</p></a>
+        <h5 style="margin-bottom: 20px">{{ blog.date|date:'M d Y'|upper }}</h5>
+        <p class="h4">{{ blog.description|striptags|truncatechars:120 }}</p>
+        <hr>
+    {% endfor %}
+
+{% endblock %}

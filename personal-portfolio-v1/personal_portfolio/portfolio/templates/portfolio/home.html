@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+{% extends 'portfolio/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+    <div style="text-align: center">
+        <img src="{% static 'portfolio/dhanu_vision.jpg' %}" alt="vision"
+             style="border: 2px solid aqua; margin-bottom: 20px;">
+
+        <h1 style="margin-bottom: 80px">
+            Dhanushka Gayashan is a Technical Evangelist and lives in Auckland(AKL), New Zealand
+        </h1>
+    </div>
+
+    <p class="h1 ml-auto">Portfolio</p>
+
+    <hr>
+
+    <div class="row row-cols-1 row-cols-md-3" style="margin-top: 30px">
+        {% for project in projects %}
+              <div class="col mb-4">
+                <div class="card shadow h-100">
+                  <img src="{{ project.image.url }}" class="card-img-top" alt="project image" style="height: 300px">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ project.title }}</h5>
+                        <p class="card-text">{{ project.description|striptags|truncatechars:100 }}</p>
+                        {% if project.url %}
+                            <div style="text-align: center">
+                                <a href="{{ project.url }}" class="btn btn-primary stretched-link">{{ project.title }}</a>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+              </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}

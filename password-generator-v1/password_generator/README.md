@@ -2,6 +2,7 @@
 
     - Python
     - Django
+	- Bootstrap
 
 **_Installed Libraries_**
 
