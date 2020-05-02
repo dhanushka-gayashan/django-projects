@@ -1,0 +1,17 @@
+.todo-img {
+    width: 30px;
+    height: 30px;
+}
+
+.backdrop {
+    width: 1024px;
+    color: gray;
+}
+
+.war-zone {
+    margin-top: 20%;
+}
+
+.nounderline {
+  text-decoration: none !important
+}

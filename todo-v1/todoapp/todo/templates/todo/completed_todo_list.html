@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+{% extends 'todo/base.html' %}
+
+{% block content %}
+
+    <div class="row justify-content-center mt-5 text-center">
+        <div class="col-md-10"><h1>Completed Todos</h1></div>
+    </div>
+
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-10">
+            {% for todo in todo_list %}
+                <a href="{% url 'view_todo' todo.id %}" class="nounderline">
+                    <div class="alert {% if todo.important %} alert-danger {% else %} alert-success{% endif %}" role="alert">
+                        <h4 class="alert-heading">{{ todo.title }}</h4>
+
+                        {% if todo.memo %}
+                            <p>{{ todo.memo|truncatechars:200 }}</p>
+                        {% endif %}
+
+                        <hr>
+
+                        <p class="mb-0">Completed On: {{ todo.date_completed|date:'M j Y H:i' }}</p>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}
